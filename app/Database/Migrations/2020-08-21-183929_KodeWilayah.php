@@ -24,7 +24,7 @@ class KodeWilayah extends Migration
 		]);
 
 		$this->forge->addKey('id', true);
-		$this->forge->createTable('KodeWilayah');
+		$this->forge->createTable('kode_wilayah');
 	}
 
 	//--------------------------------------------------------------------

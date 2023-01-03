@@ -13,8 +13,6 @@ class Data extends BaseController
 
         $data = $dataModel->select('*')
                 ->join('master_data', 'data.id_master_data=master_data.id')
-                ->join('kode_wilayah', 'data.kode_wilayah=kode_wilayah.kode_wilayah')
-                ->orderBy('data.id_master_data','asc')
                 ->get();
                 
 		return view('data/index',[
@@ -22,8 +20,17 @@ class Data extends BaseController
         ]);
 	}
 
-   public function import()
+   public function importView()
+    { 
+        return view('data/importView');
+    }
+	//--------------------------------------------------------------------
+    public function import()
     {
+        // $modelMasterData = new \App\Models\MasterDataModel();
+        // d($modelMasterData);
+        d($this->request->getVar('su'));
+        // d($this->request->getFile('submit'));
         if($this->request->getPost()){
             $fileName = $_FILES["csv"]["tmp_name"];
 
@@ -42,7 +49,7 @@ class Data extends BaseController
                 $modelData = new \App\Models\DataModel();
 
                 $builder = $modelData->builder();
-
+                // dd($file);
                 $data = array();
 
                 while(! feof($file))
@@ -65,10 +72,8 @@ class Data extends BaseController
                 fclose($file);
             }
 
-            return redirect()->to(site_url('Data/index'));
+            return redirect()->to(site_url('Data'));
         } 
-        return view('data/import');
-    } 
-	//--------------------------------------------------------------------
+    }
 
 }

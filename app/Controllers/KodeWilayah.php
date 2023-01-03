@@ -17,8 +17,14 @@ class KodeWilayah extends BaseController
         ]);
 	}
 
+    public function importView()
+    {
+        return view('kode_wilayah/importView');
+    }
+
     public function import()
     {
+        // dd($this->request->getPost());
         if($this->request->getPost()){
             $fileName = $_FILES["csv"]["tmp_name"];
 
@@ -51,9 +57,8 @@ class KodeWilayah extends BaseController
                 fclose($file);
             }
 
-            return redirect()->to(site_url('KodeWilayah/index'));
+            return redirect()->to(site_url('KodeWilayah'));
         }
-        return view('kode_wilayah/import');
     }
 	//--------------------------------------------------------------------
 

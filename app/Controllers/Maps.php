@@ -4,11 +4,38 @@ class Maps extends BaseController
 {
 	public function index()
 	{
-		$fileName = base_url("maps/pontianak.geojson");
+
+		$model = new \App\Models\DataModel();
+
+		$fileName = base_url("maps/map2.geojson");
 		$file = file_get_contents($fileName);
 		$file = json_decode($file);
 
-		return view('maps/index');
+
+		$features = $file->features;
+
+		foreach($features as $index=>$feature )
+		{
+			$kode_wilayah = $feature->properties->kode;
+			$data = $model->where('id_master_data',1)
+						->where('kode_wilayah', $kode_wilayah)
+						->first();
+
+			if ($data)
+			{
+				$features[$index]->properties->nilai = $data->nilai;
+			}
+		}
+
+		$nilaiMax = $model->select('MAX(nilai) AS nilai')->where('id_master_data',1)->first()->nilai;
+		// dd($nilaiMax);
+
+		// print_r($nilaiMax);exit();
+
+		return view('maps/index',[
+			'data' => $features,
+			'nilaiMax' => $nilaiMax,
+		]);
 	}
 
 	//--------------------------------------------------------------------

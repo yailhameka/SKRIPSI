@@ -1,5 +1,6 @@
 <?= $this->extend('layout') ?>
 <?= $this->section('content') ?>
+
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -8,7 +9,7 @@
                 <p class="card-category">Menu Data</p>
             </div>
             <div class="card-body">
-                <a href="<?= site_url('Data/import') ?>" class="btn btn-primary">Tambah Data</a>
+                <a href="<?= site_url('Data/importView') ?>" class="btn btn-primary">Tambah Data</a>
                 <hr>
                 <div class="table-responsive">
                     <table class="table table-striped">
@@ -23,10 +24,10 @@
                         <tbody>
                             <?php foreach($data->getResult() as $key=>$value): ?>
                                 <tr>
-                                    <td><?= $key+1 ?></td>
-                                    <td><?= $value->nama ?></td>
-                                    <td><?= $value->nama_wilayah ?></td>
-                                    <td><?= $value->nilai ?></td>
+                                    <td><?= $key+1; ?></td>
+                                    <td><?= $value->nama; ?></td>
+                                    <td><?= $value->kode_wilayah; ?></td>
+                                    <td><?= $value->nilai; ?></td>
                                 </tr>
                             <?php endforeach ?>
                         </tbody>

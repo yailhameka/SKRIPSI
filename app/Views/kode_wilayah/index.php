@@ -8,7 +8,7 @@
                 <p class="card-category">Menu Kode Wilayah</p>
             </div>
             <div class="card-body">
-                <a href="<?= site_url('KodeWilayah/import') ?>" class="btn btn-primary">Tambah Data</a>
+                <a href="<?= site_url('kode_wilayah/importView') ?>" class="btn btn-primary">Tambah Data</a>
                 <hr>
                 <div class="table-responsive">
                     <table class="table table-striped">

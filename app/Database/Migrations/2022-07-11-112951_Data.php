@@ -31,7 +31,7 @@ class Data extends Migration
 
 		$this->forge->addKey('id', true);
 		$this->forge->addForeignKey('id_master_data','master_data','id');
-		$this->forge->createTable('Data');
+		$this->forge->createTable('data');
 	}
 
 	//--------------------------------------------------------------------

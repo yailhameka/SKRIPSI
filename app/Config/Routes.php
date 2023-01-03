@@ -37,7 +37,12 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Maps::index');
 $routes->get('/KodeWilayah', 'KodeWilayah::index');
+$routes->get('kode_wilayah/importView', 'KodeWilayah::importView');
+$routes->post('kode_wilayah/import', 'KodeWilayah::import');
+$routes->get('/Data/importView', 'Data::importView');
+$routes->post('Data/import', 'Data::import');
 $routes->get('/Data', 'Data::index');
+
 // $routes->get('/index.php/KodeWilayah', 'Maps::index');
 
 /*

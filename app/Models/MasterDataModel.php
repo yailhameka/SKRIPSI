@@ -3,7 +3,7 @@
 use CodeIgniter\Model;
 
 class MasterDataModel extends Model{
-    protected $table = 'MasterData';
+    protected $table = 'master_data';
     protected $primaryKey = 'id';
     protected $allowedFields = [
         'id', 'nama'

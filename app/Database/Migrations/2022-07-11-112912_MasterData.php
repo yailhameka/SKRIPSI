@@ -20,13 +20,13 @@ class MasterData extends Migration
 		]);
 
 		$this->forge->addKey('id', true);
-		$this->forge->createTable('MasterData');
+		$this->forge->createTable('master_data');
 	}
 
 	//--------------------------------------------------------------------
 
 	public function down()
 	{
-		$this->forge->dropTable('MasterData');
+		$this->forge->dropTable('master_data');
 	}
 }
